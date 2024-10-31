@@ -1,0 +1,111 @@
+﻿@model ExampleEric.Models.Address
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<style>
+    /* Estilos generales */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    dl {
+        margin: 20px 0;
+        padding: 15px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        background-color: #ffffff;
+    }
+
+    dt {
+        font-weight: bold;
+    }
+
+    .btn-edit {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .btn-edit:hover {
+        background-color: #0056b3;
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #007bff;
+        transition: color 0.3s;
+    }
+
+    .back-link:hover {
+        color: #0056b3;
+    }
+</style>
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Dirección</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Cliente
+        </dt>
+        <dd class="col-sm-10">
+            @($"{Model.Client.FirstName} {Model.Client.LastName}")
+        </dd>
+        <dt class="col-sm-2">
+            País
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+        <dt class="col-sm-2">
+            Estado o Provincia
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StateOrProvince)
+        </dd>
+        <dt class="col-sm-2">
+            Dirección
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address1)
+        </dd>
+        <dt class="col-sm-2">
+            Ciudad
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn-edit">Editar</a> |
+    <a asp-action="Index" class="back-link">Volver a la Lista</a>
+</div>
+

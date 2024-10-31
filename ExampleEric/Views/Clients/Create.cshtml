@@ -1,0 +1,134 @@
+﻿@model ExampleEric.Models.Client
+
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<h1>Crear</h1>
+
+<h4>Cliente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label">Nombre</label>
+                <input asp-for="FirstName" class="form-control"
+                       required
+                       pattern="[A-Za-z\s]+"
+                       title="El nombre solo puede contener letras." />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label">Apellido</label>
+                <input asp-for="LastName" class="form-control"
+                       required
+                       pattern="[A-Za-z\s]+"
+                       title="El apellido solo puede contener letras." />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Years" class="control-label">Edad</label>
+                <input asp-for="Years" class="form-control"
+                       required
+                       type="number"
+                       min="1"
+                       max="120"
+                       title="La edad debe estar entre 1 y 120." />
+                <span asp-validation-for="Years" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="back-link">Volver a la Lista</a>
+</div>
+
+<style>
+
+
+    h1 {
+        font-size: 2.5em;
+        color: #007bff; /* Color azul */
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        font-size: 1.8em;   
+        margin-bottom: 10px;
+        color: #0056b3; /* Color azul oscuro */
+    }
+
+    hr {
+        border: 0;
+        height: 2px;
+        background: #007bff; /* Línea horizontal azul */
+        margin-bottom: 20px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .col-md-4 {
+        background-color: #ffffff; /* Fondo blanco para el formulario */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        width: 100%;
+        max-width: 400px; /* Ancho máximo del formulario */
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        border: 1px solid #007bff; /* Borde azul */
+        border-radius: 4px;
+        padding: 10px;
+        font-size: 1em;
+    }
+
+        .form-control:focus {
+            border-color: #0056b3; /* Color del borde al hacer foco */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra suave al hacer foco */
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+        }
+
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #007bff;
+        transition: color 0.3s;
+    }
+
+        .back-link:hover {
+            color: #0056b3; /* Color más oscuro al pasar el mouse */
+        }
+</style>

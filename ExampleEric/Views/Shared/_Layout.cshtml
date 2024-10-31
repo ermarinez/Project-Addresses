@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Inicio</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ExampleEric.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3 custom-navbar w-100">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                </div>
+                <div class="navbar-collapse collapse d-sm-inline-flex align-items-start">
+                    <ul class="navbar-nav custom-nav">
+                        <li class="nav-item">
+                            <a class="nav-link btn-custom" href="https://localhost:7235/clients">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-custom" href="https://localhost:7235/addresses">Direcciones</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <style>
+        /* Ajuste de diseño y estilos personalizados */
+        .custom-navbar {
+            width: 100%;
+            margin: 0;
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+
+        .custom-nav {
+            display: flex;
+            flex-direction: row;
+            gap: 10px; /* Espaciado entre botones */
+        }
+
+        .btn-custom {
+            color: #fff !important;
+            background-color: #007bff;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+            .btn-custom:hover {
+                background-color: #0056b3;
+                text-decoration: none;
+            }
+
+        .footer {
+            width: 100%;
+            padding: 10px 0;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+    </style>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer border-top text-muted w-100">
+       &copy; 2024 - ExampleEric - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

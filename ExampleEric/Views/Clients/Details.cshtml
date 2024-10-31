@@ -1,0 +1,119 @@
+﻿@model ExampleEric.Models.Client
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nombre
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            Apellido
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            Edad
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Years)
+        </dd>
+        <dt class="col-sm-12">
+            Direcciones
+        </dt>
+        @foreach (var address in Model.Addresses)
+        {
+            <dd class="col-sm-12">
+                <a asp-controller="Addresses" asp-action="Details" asp-route-id="@address.Id">
+                    @($"{address.Address1}, {address.City}, {address.StateOrProvince} {address.Country}")
+                </a>
+            </dd>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+    <a asp-action="Index" class="back-link">Volver a la Lista</a>
+</div>
+
+<style>
+    /* Estilos generales */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa; /* Color de fondo suave */
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+        color: #007bff; /* Color azul */
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+        color: #0056b3; /* Color azul oscuro */
+    }
+
+    hr {
+        border: 0;
+        height: 2px;
+        background: #007bff; /* Línea horizontal azul */
+        margin-bottom: 20px;
+    }
+
+    dl {
+        background-color: #ffffff; /* Fondo blanco para los detalles */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    }
+
+    dt {
+        font-weight: bold;
+        color: #0056b3; /* Color azul oscuro para las etiquetas */
+    }
+
+    dd {
+        margin-bottom: 10px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #007bff;
+        transition: color 0.3s;
+    }
+
+    .back-link:hover {
+        color: #0056b3; /* Color más oscuro al pasar el mouse */
+    }
+</style>

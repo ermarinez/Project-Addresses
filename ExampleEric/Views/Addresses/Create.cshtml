@@ -1,0 +1,112 @@
+﻿@model ExampleEric.Models.Address
+
+@{
+    ViewData["Title"] = "Crear Dirección";
+}
+
+<style>
+    /* Estilos generales */
+
+    h1 {
+        font-size: 2em;
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        transition: border-color 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+    .text-danger {
+        font-size: 0.9em;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #007bff;
+        transition: color 0.3s;
+    }
+
+        .back-link:hover {
+            color: #0056b3;
+        }
+</style>
+
+<h1>Crear Dirección</h1>
+
+<h4>Dirección</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ClientId" class="control-label">Cliente</label>
+                <select asp-for="ClientId" class="form-control" asp-items="ViewBag.ClientId">
+                    <option value="">Seleccione un cliente</option>
+                </select>
+                <span asp-validation-for="ClientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label">País</label>
+                <input asp-for="Country" class="form-control" required pattern="[A-Za-z\s]+" title="El país solo puede contener letras." />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateOrProvince" class="control-label">Estado o Provincia</label>
+                <input asp-for="StateOrProvince" class="form-control" required pattern="[A-Za-z\s]+" title="El estado o provincia solo puede contener letras." />
+                <span asp-validation-for="StateOrProvince" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address1" class="control-label">Dirección</label>
+                <input asp-for="Address1" class="form-control" required />
+                <span asp-validation-for="Address1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label">Ciudad</label>
+                <input asp-for="City" class="form-control" required pattern="[A-Za-z\s]+" title="La ciudad solo puede contener letras." />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="back-link">Volver a la Lista</a>
+</div>
+

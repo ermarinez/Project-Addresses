@@ -1,0 +1,108 @@
+﻿@model ExampleEric.Models.Client
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar</h1>
+
+<h4>Cliente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <!-- Asegúrate de que el método sea POST -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label">Nombre</label>
+                <input asp-for="FirstName" class="form-control" required minlength="2" maxlength="50"
+                       pattern="^[A-Za-zÀ-ÿ ']+$"
+                       title="El nombre debe contener solo letras y tener entre 2 y 50 caracteres sin números ni signos." />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label">Apellido</label>
+                <input asp-for="LastName" class="form-control" required minlength="2" maxlength="50"
+                       pattern="^[A-Za-zÀ-ÿ ']+$"
+                       title="El apellido debe contener solo letras y tener entre 2 y 50 caracteres sin números ni signos." />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Years" class="control-label">Edad</label>
+                <input asp-for="Years" class="form-control" required min="18" max="120" type="number"
+                       onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                       title="La edad debe ser un número entre 18 y 120, sin signos ni letras." />
+                <span asp-validation-for="Years" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="back-link">Volver a la Lista</a>
+</div>
+
+
+<style>
+    /* Estilos generales */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa; /* Color de fondo suave */
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+        color: #007bff; /* Color azul */
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+        color: #0056b3; /* Color azul oscuro */
+    }
+
+    hr {
+        border: 0;
+        height: 2px;
+        background: #007bff; /* Línea horizontal azul */
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px; /* Espaciado entre grupos de formularios */
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+        }
+
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #007bff;
+        transition: color 0.3s;
+    }
+
+        .back-link:hover {
+            color: #0056b3; /* Color más oscuro al pasar el mouse */
+        }
+</style>

@@ -1,0 +1,125 @@
+﻿@model ExampleEric.Models.Address
+
+@{
+    ViewData["Title"] = "Eliminar";
+
+    // Variables para evitar conflictos
+    var nombreCliente = $"{Model.Client.FirstName} {Model.Client.LastName}";
+    var pais = Model.Country;
+    var estadoProvincia = Model.StateOrProvince;
+    var direccion1 = Model.Address1;
+    var ciudad = Model.City;
+}
+
+<h1>Eliminar</h1>
+
+<h3>¿Está seguro de que desea eliminar esto?</h3>
+<div>
+    <h4>Dirección</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Cliente
+        </dt>
+        <dd class="col-sm-10">
+            @nombreCliente
+        </dd>
+        <dt class="col-sm-2">
+            País
+        </dt>
+        <dd class="col-sm-10">
+            @pais
+        </dd>
+        <dt class="col-sm-2">
+            Estado o Provincia
+        </dt>
+        <dd class="col-sm-10">
+            @estadoProvincia
+        </dd>
+        <dt class="col-sm-2">
+            Dirección
+        </dt>
+        <dd class="col-sm-10">
+            @direccion1
+        </dd>
+        <dt class="col-sm-2">
+            Ciudad
+        </dt>
+        <dd class="col-sm-10">
+            @ciudad
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
+    </form>
+</div>
+
+<style>
+    /* Estilos generales */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa; /* Color de fondo suave */
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+        color: #dc3545; /* Color rojo para eliminar */
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+        color: #dc3545; /* Color rojo */
+    }
+
+    h4 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        color: #c82333; /* Color rojo oscuro */
+    }
+
+    hr {
+        border: 0;
+        height: 2px;
+        background: #dc3545; /* Línea horizontal roja */
+        margin-bottom: 20px;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333; /* Color más oscuro al pasar el mouse */
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        margin-left: 10px; /* Espaciado entre botones */
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Color más oscuro al pasar el mouse */
+        }
+</style>
+
+
