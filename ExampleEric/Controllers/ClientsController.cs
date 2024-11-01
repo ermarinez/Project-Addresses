@@ -54,12 +54,24 @@ namespace ExampleEric.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Years")] Client client)
         {
+            // Verificar si ya existe un cliente con el mismo nombre y apellido
+            var result = await _context.Clients
+                .Where(x => x.FirstName == client.FirstName && x.LastName == client.LastName)
+                .AnyAsync();
+
+            if (result)
+            {
+                // Agregar un mensaje de error al modelo para mostrarlo en la vista
+                ModelState.AddModelError(string.Empty, "Este cliente ya está registrado.");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(client);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
+            }   
+
             return View(client);
         }
 
@@ -89,6 +101,17 @@ namespace ExampleEric.Controllers
             if (id != client.Id)
             {
                 return NotFound();
+            }
+
+            // Verificar si ya existe un cliente con el mismo nombre y apellido
+            var result = await _context.Clients
+                .Where(x => x.FirstName == client.FirstName && x.LastName == client.LastName)
+                .AnyAsync();
+
+            if (result)
+            {
+                // Agregar un mensaje de error al modelo para mostrarlo en la vista
+                ModelState.AddModelError(string.Empty, "Existe un cliente con ese nombre y apellido registrado.");
             }
 
             if (ModelState.IsValid)
@@ -123,7 +146,9 @@ namespace ExampleEric.Controllers
             }
 
             var client = await _context.Clients
+                .Include(c => c.Addresses) // Incluye las direcciones
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (client == null)
             {
                 return NotFound();

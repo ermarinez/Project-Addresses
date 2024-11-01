@@ -1,39 +1,31 @@
 ﻿@model ExampleEric.Models.Client
 
 @{
-    ViewData["Title"] = "Eliminar";
-
-    // Variables para evitar conflictos
-    var nombre = Model.FirstName;
-    var apellido = Model.LastName;
-    var años = Model.Years;
+    ViewData["Title"] = "Eliminar Cliente";
 }
 
-<h1>Eliminar</h1>
+<h1>Eliminar Cliente</h1>
 
-<h3>¿Está seguro de que desea eliminar esto?</h3>
+@if (Model.Addresses != null && Model.Addresses.Any())
+{
+    <h3>¿Está seguro de que desea eliminar este cliente y todas sus direcciones asociadas?</h3>
+}
+else
+{
+    <h3>¿Está seguro de que desea eliminar este cliente?</h3>
+}
 <div>
     <h4>Cliente</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            Nombre
-        </dt>
-        <dd class="col-sm-10">
-            @nombre
-        </dd>
-        <dt class="col-sm-2">
-            Apellido
-        </dt>
-        <dd class="col-sm-10">
-            @apellido
-        </dd>
-        <dt class="col-sm-2">
-            Años
-        </dt>
-        <dd class="col-sm-10">
-            @años
-        </dd>
+        <dt class="col-sm-2">Nombre</dt>
+        <dd class="col-sm-10">@Model.FirstName</dd>
+        <dt class="col-sm-2">Apellido</dt>
+        <dd class="col-sm-10">@Model.LastName</dd>
+        <dt class="col-sm-2">Años</dt>
+        <dd class="col-sm-10">@Model.Years</dd>
+        <dt class="col-sm-2">Direcciones Asociadas</dt>
+        <dd class="col-sm-10">@Model.Addresses.Count()</dd>
     </dl>
 
     <form asp-action="Delete">
@@ -42,6 +34,7 @@
         <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
     </form>
 </div>
+
 
 <style>
     /* Estilos generales */

@@ -12,11 +12,16 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3 custom-navbar w-100">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
-                </div>
-                <div class="navbar-collapse collapse d-sm-inline-flex align-items-start">
-                    <ul class="navbar-nav custom-nav">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+
+                <!-- Botón para colapsar el menú en pantallas pequeñas -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Contenedor colapsable para el menú -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav custom-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link btn-custom" href="https://localhost:7235/clients">Clientes</a>
                         </li>
@@ -74,7 +79,7 @@
     </div>
 
     <footer class="footer border-top text-muted w-100">
-       &copy; 2024 - ExampleEric - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        &copy; 2024 - ExampleEric - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
